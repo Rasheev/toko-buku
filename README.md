@@ -1,28 +1,83 @@
 # toko-buku
 
 ## Tautan Aplikasi Adaptable
-[title](https://rasheev-tokobuku.adaptable.app)
+[Klik disini](https://rasheev-tokobuku.adaptable.app)
 
 ## Checklists
 - [x] Membuat sebuah proyek Django baru.
-        **Langkah-Langkah:**
-        - Membuat repositori baru `toko-buku` dan direktori baru `toko_buku`
-        - Membuka *terminal* atau *command prompt* pada direktori tersebut lalu menggunakan perintah `git setup`
-        - Menggunakan perintah `python.exe -m venv env`
-        - Mengaktivasi *virtual environment* menggunakan perintah `env\Scripts\activate.bat`
-        - Meng-*install* **django** menggunakan perintah `pip install django`
-        - Menggunakan perintah `django-admin startproject toko_buku .` untuk membuat direktori proyek menggunakan template dari django
+**Langkah-langkah:**
+1. Membuat repositori baru `toko-buku` dan direktori baru `toko_buku`
+2. Membuka *terminal* atau *command prompt* pada direktori tersebut lalu menggunakan perintah `git setup`
+3. Menggunakan perintah `python.exe -m venv env`
+4. Mengaktivasi *virtual environment* menggunakan perintah `env\Scripts\activate.bat`
+5. Meng-*install* **django** menggunakan perintah `pip install django`
+6. Menggunakan perintah `django-admin startproject toko_buku .` untuk membuat direktori proyek menggunakan template dari django
 
 - [x] Membuat aplikasi dengan nama `main` pada proyek tersebut.
-        **Langkah-Langkah:**
-        - Menggunakan perintah `django-admin startapp main` pada direktori utama `toko_buku`
+**Langkah-langkah:**
+1. Menggunakan perintah `django-admin startapp main` pada direktori utama `toko_buku`
 
 - [x] Melakukan *routing* pada proyek agar dapat menjalankan aplikasi `main`.
+**Langkah-langkah:**
+1. Buka `settings.py` dalam direktori proyek `toko_buku`
+2. Menambahkan `main` (setelah koma) dalam bagian list `INSTALLED_APPS`
 
 - [x] Membuat model pada aplikasi `main` dengan nama `Item` ...
 
 - [x] Membuat sebuah fungsi pada `views.py` untuk dikembalikan ke dalam sebuah template HTML yang menampilkan nama aplikasi serta nama dan kelas kamu.
+**Langkah-langkah:**
+1. Membuat fungsi `show_main` dalam `views.py` seperti berikut
+```python
+from django.shortcuts import render
+
+def show_main(request):
+    context = {
+        'name': 'Rashif Aunur Rasyid',
+        'class': 'PBP B'
+    }
+
+    return render(request, "main.html", context)
+```
+2. Menambahkan direktori `templates` didalam direktori `main`
+3. Menambahkan file `main.html` dimana nama aplikasi, beserta nama dan kelas akan ditampilkan
 
 - [x] Membuat sebuah *routing* pada `urls.py` aplikasi main untuk memetakan fungsi yang telah dibuat pada `views.py`.
+**Langkah-langkah:**
+1. Menggunakan potongan *code* berikut untuk menghasilkan *url pattern*
+```python
+from django.urls import path
+from main.views import show_main
+
+app_name = 'main'
+
+urlpatterns = [
+    path('', show_main, name="show_main"),
+]
+```
+2. Pada `views.py` proyek, menggunakan potongan *code* berikut agar *url pattern* yang telah dibuat diatas dapat digunakan oleh proyek
+```python
+from django.contrib import admin
+from django.urls import path, include
+
+urlpatterns = [
+    path('admin/', admin.site.urls),
+    path('main/', include('main.urls')),
+]
+```
 
 - [x] Melakukan *deployment* ke Adaptable terhadap aplikasi yang sudah dibuat sehingga nantinya dapat diakses oleh teman-temanmu melalui Internet.
+**Langkah-langkah:**
+1. Pada Adaptable, menggunakan `Python App Template` dan *database type* `PostgreSQL`
+2. Pada bagian *template settings*, pilih `python version 3.11` (karena saya menggunakan python 3.11.x) dan pada *Start Command* gunakan perintah `python manage.py migrate && gunicorn toko_buku.wsgi`
+
+- [x] Membuat sebuah `README.md` yang berisi tautan menuju aplikasi Adaptable yang sudah di-deploy, serta jawaban dari beberapa pertanyaan berikut.
+1. Jelaskan bagaimana cara kamu mengimplementasikan checklist di atas secara step-by-step (bukan hanya sekadar mengikuti tutorial).
+    - sudah tertulis diatas
+2. Buatlah bagan yang berisi request client ke web aplikasi berbasis Django beserta responnya dan jelaskan pada bagan tersebut kaitan antara `urls.py`, `views.py`, `models.py`, dan berkas `html`.
+    - 
+3. Jelaskan mengapa kita menggunakan ***virtual environment***? Apakah kita tetap dapat membuat aplikasi web berbasis Django tanpa menggunakan ***virtual environment***?
+    - Untuk mengisolasi/memisahkan 
+4. Jelaskan apakah itu MVC, MVT, MVVM dan perbedaan dari ketiganya.
+    - MVC adalah Model-View-Controller yang merupakan pola pemrograman berbasis platform yang paling umum dengan menggunakan Controller sebagai
+    - MVT adalah Model-View-Template merupakan turunan dari MVC, perbedaannya adalah menggunakan Template sebagai
+    - MVVC adalah Model-View-ViewController juga merupakan turunan dari MVC, perbedaannya adalah menggunakan ViewController sebagai
