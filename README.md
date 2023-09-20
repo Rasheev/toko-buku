@@ -1,8 +1,6 @@
 # toko-buku
 
-## Tautan Aplikasi Adaptable
-[Klik disini](https://rasheev-tokobuku.adaptable.app)
-
+# Tugas 2: Implementasi Form dan Data Delivery pada Django
 ## Checklists
 - [x] Membuat sebuah proyek Django baru.
 **Langkah-langkah:**
@@ -91,18 +89,66 @@ urlpatterns = [
 - [x] Membuat routing URL untuk masing-masing `views` yang telah ditambahkan pada poin 2.
 - [x] Menjawab beberapa pertanyaan berikut pada `README.md` pada _root folder_.
 - [x] Mengakses kelima URL di poin 2 menggunakan Postman, membuat _screenshoot_ dari hasil akses URL pada Postman, dan menambahkannya ke dalam `README.md`.
-- [] Melakukan `add`-`commit`-`push` ke GitHub.
+- [x] Melakukan `add`-`commit`-`push` ke GitHub.
+- [x] **BONUS**  Menambahkan pesan "Kamu menyimpan X item pada aplikasi ini" (dengan X adalah jumlah data item yang tersimpan pada aplikasi) dan menampilkannya di atas tabel data. Kalimat pesan boleh dikustomisasi sesuai dengan tema aplikasi, namun harus memiliki makna yang sama.
 
 
 #### Pertanyaan:
-- [] apa perbedaan antara form `POST` dan form `GET` dalam Django?
-    - 
-- [] Apa perbedaan utama antara XML, JSON, dan HTMl dalam konteks pengiriman data?
-    - 
-- [] Mengapa JSON sering digunakan dalam pertukaran data antara aplikasi web modern?
-    - 
-- [] Jelaskan bagaimana cara kamu mengimplementasikan checklist di atas secara _step-by-step_ (bukan hanya sekadar mengikuti tutorial).
-    1. 
+- [x] apa perbedaan antara form `POST` dan form `GET` dalam Django?
+    - Form `POST` digunakan untuk men-_submit_ data ke server sedangkan form `GET` digunakan untuk mengambil data dari server.
+- [x] Apa perbedaan utama antara XML, JSON, dan HTMl dalam konteks pengiriman data?
+    - XML lebih fleksibel dan digunakan untuk pertukaran data secara terstruktur secara _custom_ oleh para developer
+    - JSON lebih enteng, data dalam format JSON direpresentasikan dalam bentuk _key-value pairs_
+    - HTML menggunakan _tags_ bawaan HTML untuk menyusun struktur dan konten
+- [x] Mengapa JSON sering digunakan dalam pertukaran data antara aplikasi web modern?
+    - Ringan untuk digunakan (lightweight) dan lebih _human-readable_, dan juga merupakan subset dari _JavaScript_-yang merupakan bahasa pemrograman yang banyak digunakan dalam konteks web dev-sehingga dapat di-_parse_ secara langsung menjadi Object JavaScript
+- [x] Jelaskan bagaimana cara kamu mengimplementasikan checklist di atas secara _step-by-step_ (bukan hanya sekadar mengikuti tutorial).
+    1. Checklist 1
+        1. Membuat `base.html` sebagai "papan" utama
+        2. Membuat file baru bernama `create_product.html` yang berfungsi sebagai pengirim data dalam bentuk form `POST`
+        3. Menyambungkan `main.html` dan `create_product.html` sebagai extensi dari base.html
+
+    2. Checklist 2
+        1. Pada `views.py` pada direktori `main` mendefinisikan fungsi-fungsi berikut:
+            ```python
+            def show_html(request):
+                data = Item.objects.all()
+                return render(request, "show_item.html", {'data': data})
+
+            def show_xml(request):
+                data = Item.objects.all()
+                return HttpResponse(serializers.serialize("xml", data), content_type="application/xml")
+
+            def show_json(request):
+                data = Item.objects.all()
+                return HttpResponse(serializers.serialize("json", data), content_type="application/json")
+
+            def show_xml_by_id(request, id):
+                data = Item.objects.filter(pk=id)
+                return HttpResponse(serializers.serialize("xml", data), content_type="application/xml")
+
+
+            def show_json_by_id(request, id):
+                data = Item.objects.filter(pk=id)
+                return HttpResponse(serializers.serialize("json", data), content_type="application/json")
+            ```
+            Untuk menampilkan dalam bentuk html, saya membuat file baru bernama `show_item.html` untuk menampilkan data dalam format html
+
+    3. Checklist 3
+        1. Import fungsi-fungsi yang sudah didefinisikan dalam `views.py` ke dalam `urls.py` dalam direktori `main`
+            ```python
+            from main.views import show_main, create_product, show_html, show_xml, show_json, show_xml_by_id, show_json_by_id
+            ```
+        2. Lalu dalam `urlpatterns` menambahkan:
+            ```python
+            ...
+            path('html/', show_html, name="show_html"),
+            path('xml/', show_xml, name="show_xml"),
+            path('json/', show_json, name="show_json"),
+            path('xml/<int:id>/', show_xml_by_id, name="show_xml_by_id"),
+            path('json/<int:id>/', show_json_by_id, name="show_json_by_id"),
+            ...
+            ```
 
 
 #### Screenshot Postman:
