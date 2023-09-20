@@ -81,3 +81,38 @@ urlpatterns = [
     - MVC adalah Model-View-Controller yang merupakan pola pemrograman berbasis platform yang paling umum dengan menggunakan Controller sebagai
     - MVT adalah Model-View-Template merupakan turunan dari MVC, perbedaannya adalah menggunakan Template sebagai
     - MVVC adalah Model-View-ViewController juga merupakan turunan dari MVC, perbedaannya adalah menggunakan ViewController sebagai
+
+---
+
+# Tugas 3: Implementasi Form dan Data Delivery pada Django
+## Checklist:
+- [x] Membuat input `form` untuk menambahkan objek model pada app sebelumnya
+- [x] Tambahkan 5 fungsi `views` untuk melihat objek yang sudah ditambahkan dalam format HTML, XML, JSON, XML _by ID_, dan JSON _by ID_.
+- [x] Membuat routing URL untuk masing-masing `views` yang telah ditambahkan pada poin 2.
+- [x] Menjawab beberapa pertanyaan berikut pada `README.md` pada _root folder_.
+- [x] Mengakses kelima URL di poin 2 menggunakan Postman, membuat _screenshoot_ dari hasil akses URL pada Postman, dan menambahkannya ke dalam `README.md`.
+- [] Melakukan `add`-`commit`-`push` ke GitHub.
+
+
+#### Pertanyaan:
+- [] apa perbedaan antara form `POST` dan form `GET` dalam Django?
+    - 
+- [] Apa perbedaan utama antara XML, JSON, dan HTMl dalam konteks pengiriman data?
+    - 
+- [] Mengapa JSON sering digunakan dalam pertukaran data antara aplikasi web modern?
+    - 
+- [] Jelaskan bagaimana cara kamu mengimplementasikan checklist di atas secara _step-by-step_ (bukan hanya sekadar mengikuti tutorial).
+    1. 
+
+
+#### Screenshot Postman:
+1. HTML
+    - ![Postman - HTML](/assets/img/Bukti%20Postman%20-%20HTML.png)
+2. XML
+    - ![Postman - XML](/assets/img/Bukti%20Postman%20-%20XML.png)
+3. JSON
+    - ![Postman - JSON](/assets/img/Bukti%20Postman%20-%20JSON.png)
+4. XML by id
+    - ![Postman - XML by id](/assets/img/Bukti%20Postman%20-%20XML%20by%20id.png)
+5. JSOn by id
+    - ![Postman - JSON by id](/assets/img/Bukti%20Postman%20-%20JSON%20by%20id.png)

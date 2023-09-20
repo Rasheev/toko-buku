@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Item List</title>
+</head>
+<body>
+    <h1>Item List</h1>
+    <ul>
+        {% for item in data %}
+            <li>id = {{item.id}}</li>
+            <li>Name = {{item.name}}</li>
+            <li>Category = {{item.category}}</li>
+            <li>Price = {{item.price}}</li>
+            <li>Quantity = {{item.amount}}</li>
+            <li>Description = {{item.description}}</li>
+            <li>Date Added = {{item.date_added}}</li>
+            <br>
+        {% endfor %}
+    </ul>
+</body>
+</html>
