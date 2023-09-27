@@ -162,3 +162,65 @@ urlpatterns = [
     - ![Postman - XML by id](/assets/img/Bukti%20Postman%20-%20XML%20by%20id.png)
 5. JSOn by id
     - ![Postman - JSON by id](/assets/img/Bukti%20Postman%20-%20JSON%20by%20id.png)
+
+---
+
+# Tugas 4: Implementasi Autentikasi, Session, dan Cookies pada Django
+## Checklist:
+- [x] Mengimplementasikan fungsi registrasi, login, dan logout untuk memungkinkan pengguna untuk mengakses aplikasi sebelumnya dengan lancar.
+- [x] Membuat dua akun pengguna dengan masing-masing tiga dummy data menggunakan model yang telah dibuat pada aplikasi sebelumnya untuk setiap akun di lokal.
+- [x] Menghubungkan model Item dengan User.
+- [x] Menampilkan detail informasi pengguna yang sedang logged in seperti username dan menerapkan cookies seperti last login pada halaman utama aplikasi.
+- [x] Menjawab beberapa pertanyaan berikut pada README.md pada root folder (silakan modifikasi README.md yang telah kamu buat sebelumnya; tambahkan subjudul untuk setiap tugas).
+- [x] Melakukan add-commit-push ke GitHub.
+
+#### Pertanyaan:
+- [x] Apa itu Django `UserCreationForm`, dan jelaskan apa kelebihan dan kekurangannya?
+    - `UserCreationForm` adalah *import* bawaan Django dalam bentuk `form` atau formulir untuk memudahkan pendaftaran pengguna oleh *user* baru agar bisa mengakses situs web.
+    - Kelebihannya: sederhana, cepat, mudah untuk diintegrasikan,
+    - Kekurangannya: terbatas dalam sisi desain,
+- [x] Apa perbedaan antara autentikasi dan otorisasi dalam konteks Django, dan mengapa keduanya penting?
+    - Autentikasi (*Authentication*) lebih berfokus kepada men-verifikasi user dan mengatur *Sessions* user,
+    - Otorisasi (*Authorization*) lebih berfokus kepada mengatur apa saja yang boleh diakses oleh user,
+    - Karena keduanya berkontribusi pada kelancaran dan keamanan aplikasi web dan juga penggunanya,
+- [x] Apa itu cookies dalam konteks aplikasi web, dan bagaimana Django menggunakan cookies untuk mengelola data sesi pengguna?
+    - Cookies dalam konteks aplikasi web adalah informasi (kecil) yang dikirim ke browser dari situs web (server),
+    - Django menggunakan cookies dengan cara . . .
+- [x] Apakah penggunaan cookies aman secara default dalam pengembangan web, atau apakah ada risiko potensial yang harus diwaspadai?
+    - Belum tentu, ada beberapa risiko diantaranya yaitu *Cookie Hijacking*, kebocoran data, CSRF, dll.
+- [x] Jelaskan bagaimana cara kamu mengimplementasikan checklist di atas secara step-by-step (bukan hanya sekadar mengikuti tutorial).
+    1. Checklist 1:
+        1. meng-*import* module-module bawaan Django:
+            ```python
+            from django.shortcuts import redirect
+            from django.contrib import messages 
+            from django.contrib.auth import authenticate, login, logout
+            from django.contrib.auth.forms import UserCreationForm
+            ```
+        2. mendefinisikan fungsi `register`, `login_user`, dan `logout_user` pada `views.py` dalam direktori `main`,
+        3. membuat file html baru untuk fungsi `register` yaitu `register.html` dan `login.html` untuk fungsi `login_user`,
+        4. membuat button untuk `logout` di `main.html`,
+        5. me-*route* fungsi-fungsi tadi dengan *path*-nya masing-masing pada `urls.py`
+            1. meng-import fungsi-fungsi yang sudah didefinisikan tadi
+                ```python
+                from main.views import register, login_user, logout_user
+                ```
+            2. dalam `urlpatterns`, menambahkan *path url* masing-masing fungsi
+                ```python
+                ...
+                path('register/', register, name='register'),
+                path('login/', login_user, name='login'),
+                path('logout/', logout_user, name='logout'),
+                ...
+                ```
+
+    2. Checklist 2:
+        1. Jalankan `python manage.py runserver` di terminal,
+        2. Masuk ke http://localhost:8000/ lalu,
+        3. register lalu login lalu menambah produk sebanyak 3 kali; lakukan 2 kali (masing-masing *unique*),
+    
+    3. Checklist 3:
+
+#### Bonus:
+- [x] Tambahkan tombol dan fungsi untuk menambahkan amount suatu objek sebanyak satu dan tombol untuk mengurangi jumlah stok suatu objek sebanyak satu.
+- [x] Tambahkan tombol dan fungsi untuk menghapus suatu objek dari inventori.
