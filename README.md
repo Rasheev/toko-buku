@@ -220,6 +220,19 @@ urlpatterns = [
         3. register lalu login lalu menambah produk sebanyak 3 kali; lakukan 2 kali (masing-masing *unique*),
     
     3. Checklist 3:
+        1. mengimport `from django.contrib.auth.models import User` di `models.py` dalam `main`
+        2. dalam class `Item` menambahkan *attribute* baru bernama `user`
+            ```python
+            user = models.ForeignKey(User, on_delete=models.CASCADE)
+            ```
+        3. pada fungsi create_product, mengganti kolom code dibawah conditional `if form.is_valid() and request.method == "POST":` dengan
+        ```python
+        product = form.save(commit=False)
+        product.user = request.user
+        product.save()
+        return HttpResponseRedirect(reverse('main:show_main'))
+        ```
+        4.
 
 #### Bonus:
 - [x] Tambahkan tombol dan fungsi untuk menambahkan amount suatu objek sebanyak satu dan tombol untuk mengurangi jumlah stok suatu objek sebanyak satu.
