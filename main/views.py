@@ -39,12 +39,26 @@ def create_product(request):
     context = {'form': form}
     return render(request, "create_product.html", context)
 
-"""
+
 def delete_product(request, id):
-    product = Item.objects.filter(pk=id)
+    product = Item.objects.get(pk=id)
     product.delete()
     return HttpResponseRedirect(reverse('main:show_main'))
-"""
+
+
+def increment_amt(request, id):
+    product = Item.objects.get(pk=id)
+    product.amount += 1
+    product.save()
+    return HttpResponseRedirect(reverse('main:show_main'))
+
+
+def decrement_amt(request, id):
+    product = Item.objects.get(pk=id)
+    product.amount -= 1
+    product.save()
+    return HttpResponseRedirect(reverse('main:show_main'))
+
 
 def show_html(request):
     data = Item.objects.all()
