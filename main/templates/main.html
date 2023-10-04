@@ -48,6 +48,13 @@
                 <td>{{product.description}}</td>
                 <td>{{product.date_added}}</td>
                 <td>
+                    <a href="{% url 'main:edit_product' product.pk %}">
+                        <button>
+                            Edit
+                        </button>
+                    </a>
+                </td>
+                <td>
                     <a href="{% url 'main:delete_product' product.pk %}">
                         <button>
                             delete item
