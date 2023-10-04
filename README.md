@@ -237,3 +237,45 @@ urlpatterns = [
 #### Bonus:
 - [x] Tambahkan tombol dan fungsi untuk menambahkan amount suatu objek sebanyak satu dan tombol untuk mengurangi jumlah stok suatu objek sebanyak satu.
 - [x] Tambahkan tombol dan fungsi untuk menghapus suatu objek dari inventori.
+
+---
+
+# Tugas 5: Desain Web menggunakan HTML, CSS dan Framework CSS
+## Checklist:
+- [x] Kustomisasi desain pada templat HTML yang telah dibuat pada Tugas 4 dengan menggunakan CSS atau CSS framework (seperti Bootstrap, Tailwind, Bulma) dengan ketentuan sebagai berikut
+
+    - [x] Kustomisasi halaman login, register, dan tambah inventori semenarik mungkin.
+    - [x] Kustomisasi halaman daftar inventori menjadi lebih berwarna maupun menggunakan apporach lain seperti menggunakan Card. 
+
+- [x] Menjawab beberapa pertanyaan berikut pada README.md pada root folder (silakan modifikasi README.md yang telah kamu buat sebelumnya; tambahkan subjudul untuk setiap tugas).
+
+- [x] Melakukan add-commit-push ke GitHub.
+
+#### Pertanyaan:
+- [x] Jelaskan manfaat dari setiap element selector dan kapan waktu yang tepat untuk menggunakannya.
+    - Element selector: untuk memilih element tertentu (seperti header dan lainnya) sebagai penunjuk untuk membuat perubahan pada *style* element tersebut.  
+    - ID selector: untuk memilih element dengan id tertentu untuk membuat berubahan dengan element dengan id tersebut.
+    - class selector: untuk memilih element dengan class tertentu untuk membuat berubahan dengan element dengan class tersebut.
+    - Waktu yang tepat untuk menggunakan masing-masing dari selector tersebut adalah tergantung desain web-nya. Apabila ingin membuat perubahan pada tiap elemen yang sama, maka menggunakan element selector. Sedangkan, menggunakan id selector untuk membuat perubahan pada sebuah element yang memiliki id tersebut. Menggunakan class selector untuk membuat perubahan pada sekelompok elemen yang memiliki properti class yang sama.
+
+- [x] Jelaskan HTML5 Tag yang kamu ketahui.
+    - `<html>` sebagai *root* dari sebuah dokumen html
+    - `<body>` sebagai tubuh/body dari dokumen tersebut
+    - `<h1>`, `<h2>`, `<h3>`, `<h4>`, `<h5>`, `<h6>` sebagai header dari dokumen tersebut dengan masing-masing memiliki hirarki dan ukuran yang berbeda
+    - `<p>` sebagai tag paragraf
+    - `<a>` untuk mendefinisikan *hyperlink*
+    
+- [x] Jelaskan perbedaan antara margin dan padding.
+    - Margin mengosongkan area disekitar border sedangkan Padding mengosongkan area di sekitar *Content*
+
+- [x] Jelaskan perbedaan antara framework CSS Tailwind dan Bootstrap. Kapan sebaiknya kita menggunakan Bootstrap daripada Tailwind, dan sebaliknya?
+    - Tailwind
+        1. Perbedaan: lebih fleksibel dan lebih mudah beradaptasi
+        2. Kapan sebaiknya digunakan: Tergantung desainnya dan penggunaannya
+
+    - Bootstrap
+        1. Perbedaan: menghasilkan tampilan yang lebih konsisten
+        2. Kapan sebaiknya digunakan: Tergantung desainnya dan penggunaannya
+
+- [x] Jelaskan bagaimana cara kamu mengimplementasikan checklist di atas secara step-by-step (bukan hanya sekadar mengikuti tutorial).
+    - 
